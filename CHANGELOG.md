@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.4] - 2025-01-04
+
+### Changed
+
+- Removed broken ASCII art success banner from completion screen
+- Streamlined Z.ai prompt pack (removed verbose setup/advanced sections)
+- Simplified MiniMax prompt pack (removed redundant auth section)
+
 ## [1.0.3] - 2025-01-03
 
 ### Changed
