@@ -39,7 +39,7 @@ export async function ensureModelMapping(
   };
   if (opts.yes && (missing.sonnet || missing.opus || missing.haiku)) {
     throw new Error(
-      'This provider requires --model-sonnet/--model-opus/--model-haiku (OpenRouter, GatewayZ, Vercel AI Gateway).'
+      'This provider requires --model-sonnet/--model-opus/--model-haiku (OpenRouter, GatewayZ, Vercel AI Gateway, Ollama).'
     );
   }
   if (!opts.yes) {

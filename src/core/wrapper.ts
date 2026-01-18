@@ -49,6 +49,11 @@ const C = {
   ngSecondary: '\x1b[38;5;75m', // Soft cyan
   ngAccent: '\x1b[38;5;69m', // Deep cyan
   ngDim: '\x1b[38;5;67m', // Muted blue
+  // Ollama: Ember/orange gradient
+  olPrimary: '\x1b[38;5;202m', // Deep orange
+  olSecondary: '\x1b[38;5;208m', // Orange
+  olAccent: '\x1b[38;5;214m', // Bright orange
+  olDim: '\x1b[38;5;136m', // Muted ember
   // Default: White/Gray
   defPrimary: '\x1b[38;5;255m', // White
   defDim: '\x1b[38;5;245m', // Gray
@@ -165,6 +170,19 @@ const SPLASH_ART: SplashArt = {
     `${C.ngSecondary}      NanoGPT Anthropic API${C.reset}`,
     '',
   ],
+  ollama: [
+    '',
+    `${C.olPrimary}    ██████╗  ██╗     ██╗      █████╗ ███╗   ███╗ █████╗${C.reset}`,
+    `${C.olPrimary}    ██╔══██╗ ██║     ██║     ██╔══██╗████╗ ████║██╔══██╗${C.reset}`,
+    `${C.olSecondary}    ██║  ██║ ██║     ██║     ███████║██╔████╔██║███████║${C.reset}`,
+    `${C.olSecondary}    ██║  ██║ ██║     ██║     ██╔══██║██║╚██╔╝██║██╔══██║${C.reset}`,
+    `${C.olAccent}    ██████╔╝ ███████╗███████╗██║  ██║██║ ╚═╝ ██║██║  ██║${C.reset}`,
+    `${C.olAccent}    ╚═════╝  ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝${C.reset}`,
+    '',
+    `${C.olDim}    ━━━━━━━━━━━${C.olPrimary}◆${C.olDim}━━━━━━━━━━${C.reset}`,
+    `${C.olSecondary}      Ollama Anthropic API${C.reset}`,
+    '',
+  ],
   default: [
     '',
     `${C.defPrimary}    ██████╗ ██████╗   ${C.defDim}━━  M I R R O R${C.reset}`,
@@ -177,7 +195,17 @@ const SPLASH_ART: SplashArt = {
   ],
 };
 
-const KNOWN_SPLASH_STYLES = ['zai', 'minimax', 'openrouter', 'ccrouter', 'mirror', 'gatewayz', 'vercel', 'nanogpt'];
+const KNOWN_SPLASH_STYLES = [
+  'zai',
+  'minimax',
+  'openrouter',
+  'ccrouter',
+  'mirror',
+  'gatewayz',
+  'vercel',
+  'nanogpt',
+  'ollama',
+];
 
 const buildWindowsWrapperScript = (opts: {
   configDir: string;
@@ -413,6 +441,12 @@ export const writeWrapper = (
     "        cat <<'CCMNG'",
     ...SPLASH_ART.nanogpt,
     'CCMNG',
+    '        __cc_show_label="0"',
+    '        ;;',
+    '      ollama)',
+    "        cat <<'CCMOL'",
+    ...SPLASH_ART.ollama,
+    'CCMOL',
     '        __cc_show_label="0"',
     '        ;;',
     '      *)',

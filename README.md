@@ -146,6 +146,7 @@ Want to use different models? CC-MIRROR supports multiple providers:
 | **MiniMax**    | MiniMax-M2.1           | API Key    | Unified model experience        |
 | **OpenRouter** | 100+ models            | Auth Token | Model flexibility, pay-per-use  |
 | **CCRouter**   | Ollama, DeepSeek, etc. | Optional   | Local-first development         |
+| **Ollama**     | Local + cloud models   | Auth Token | Local-first + hybrid setups     |
 | **GatewayZ**   | Multi-provider gateway | Auth Token | Centralized routing             |
 | **Vercel**     | Multi-provider gateway | Auth Token | Vercel AI Gateway               |
 | **NanoGPT**    | Anthropic-compatible   | Auth Token | Simple Anthropic compat         |
@@ -163,6 +164,10 @@ npx cc-mirror quick --provider openrouter --api-key "$OPENROUTER_API_KEY" \
 
 # Claude Code Router (local LLMs)
 npx cc-mirror quick --provider ccrouter
+
+# Ollama (Anthropic-compatible)
+npx cc-mirror quick --provider ollama --api-key "ollama" \
+  --model-sonnet "qwen3-coder" --model-opus "qwen3-coder" --model-haiku "qwen3-coder"
 
 # GatewayZ (Anthropic-compatible gateway)
 npx cc-mirror quick --provider gatewayz --api-key "$GATEWAYZ_API_KEY" \
@@ -312,14 +317,14 @@ minimax                           # Run MiniMax variant
 ## CLI Options
 
 ```
---provider <name>        mirror | zai | minimax | openrouter | ccrouter | gatewayz | vercel | nanogpt | custom
+--provider <name>        mirror | zai | minimax | openrouter | ccrouter | ollama | gatewayz | vercel | nanogpt | custom
 --name <name>            Variant name (becomes the CLI command)
 --api-key <key>          Provider API key
 --base-url <url>         Custom API endpoint
 --model-sonnet <name>    Map to sonnet model
 --model-opus <name>      Map to opus model
 --model-haiku <name>     Map to haiku model
---brand <preset>         Theme: auto | mirror | zai | minimax | openrouter | ccrouter | gatewayz | vercel | nanogpt
+--brand <preset>         Theme: auto | mirror | zai | minimax | openrouter | ccrouter | ollama | gatewayz | vercel | nanogpt
 --no-tweak               Skip tweakcc theme
 --no-prompt-pack         Skip provider prompt pack
 --verbose               Show full tweakcc output during update
@@ -338,6 +343,7 @@ Each provider includes a custom color theme via [tweakcc](https://github.com/Pie
 | **minimax**    | Coral/red/orange spectrum        |
 | **openrouter** | Teal/cyan gradient               |
 | **ccrouter**   | Sky blue accents                 |
+| **ollama**     | Warm ember/orange palette        |
 | **gatewayz**   | Violet gradients                 |
 | **vercel**     | Monochrome with green accents    |
 | **nanogpt**    | Neon blue + pink accents         |

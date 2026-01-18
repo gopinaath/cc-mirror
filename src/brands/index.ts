@@ -4,6 +4,7 @@ import { buildMinimaxTweakccConfig } from './minimax.js';
 import { buildOpenRouterTweakccConfig } from './openrouter.js';
 import { buildCCRouterTweakccConfig } from './ccrouter.js';
 import { buildMirrorTweakccConfig } from './mirror.js';
+import { buildOllamaTweakccConfig } from './ollama.js';
 import { buildGatewayzTweakccConfig } from './gatewayz.js';
 import { buildVercelTweakccConfig } from './vercel.js';
 import { buildNanoGPTTweakccConfig } from './nanogpt.js';
@@ -39,6 +40,12 @@ const BRAND_PRESETS: Record<string, BrandPreset> = {
     label: 'CCRouter Sky',
     description: 'Airy sky-blue accents for Claude Code Router.',
     buildTweakccConfig: buildCCRouterTweakccConfig,
+  },
+  ollama: {
+    key: 'ollama',
+    label: 'Ollama Ember',
+    description: 'Warm ember palette for Ollama local + cloud.',
+    buildTweakccConfig: buildOllamaTweakccConfig,
   },
   gatewayz: {
     key: 'gatewayz',

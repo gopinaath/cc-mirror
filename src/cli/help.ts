@@ -20,6 +20,7 @@ FOCUS
 QUICK START
   npx cc-mirror quick --provider mirror    # Fastest path to Claude
   npx cc-mirror quick --provider zai       # Z.ai with GLM models
+  npx cc-mirror quick --provider ollama    # Ollama local + cloud models
   npx cc-mirror                            # Interactive TUI
 
 COMMANDS
@@ -34,9 +35,9 @@ COMMANDS
 
 OPTIONS (create/quick)
   --name <name>                Variant name (becomes CLI command)
-  --provider <name>            Provider: mirror | zai | minimax | openrouter | ccrouter | gatewayz | vercel | nanogpt
+  --provider <name>            Provider: mirror | zai | minimax | openrouter | ccrouter | ollama | gatewayz | vercel | nanogpt
   --api-key <key>              Provider API key
-  --brand <preset>             Theme: auto | none | mirror | zai | minimax | openrouter | ccrouter | gatewayz | vercel | nanogpt
+  --brand <preset>             Theme: auto | none | mirror | zai | minimax | openrouter | ccrouter | ollama | gatewayz | vercel | nanogpt
   --tui / --no-tui             Force TUI on/off
 
 OPTIONS (advanced)
@@ -57,6 +58,7 @@ PROVIDERS
   minimax       MiniMax-M2.1 via MiniMax Cloud
   openrouter    100+ models via OpenRouter
   ccrouter      Local LLMs via Claude Code Router
+  ollama        Local + cloud models via Ollama
   gatewayz      GatewayZ AI Gateway
   vercel        Vercel AI Gateway
   nanogpt       NanoGPT Anthropic-compatible

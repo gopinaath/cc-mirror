@@ -22,6 +22,8 @@ export interface ProviderTemplate {
   noPromptPack?: boolean;
   /** Require empty ANTHROPIC_API_KEY (for authToken providers like Vercel AI Gateway) */
   requiresEmptyApiKey?: boolean;
+  /** Keep ANTHROPIC_API_KEY alongside auth token (e.g., Ollama Anthropic compatibility) */
+  authTokenAlsoSetsApiKey?: boolean;
 }
 
 export interface ModelOverrides {
@@ -117,6 +119,24 @@ const PROVIDERS: Record<string, ProviderTemplate> = {
     authMode: 'authToken',
     requiresModelMapping: false, // Models configured in ~/.claude-code-router/config.json
     credentialOptional: true, // No API key needed - CCRouter handles auth
+  },
+  ollama: {
+    key: 'ollama',
+    label: 'Ollama',
+    description: 'Local + cloud models via Ollama Anthropic compatibility',
+    baseUrl: 'http://localhost:11434',
+    env: {
+      API_TIMEOUT_MS: DEFAULT_TIMEOUT_MS,
+      ANTHROPIC_AUTH_TOKEN: 'ollama',
+      ANTHROPIC_API_KEY: 'ollama',
+      CC_MIRROR_SPLASH: 1,
+      CC_MIRROR_PROVIDER_LABEL: 'Ollama',
+      CC_MIRROR_SPLASH_STYLE: 'ollama',
+    },
+    apiKeyLabel: 'Ollama API key (use "ollama" for local)',
+    authMode: 'authToken',
+    authTokenAlsoSetsApiKey: true,
+    requiresModelMapping: true,
   },
   gatewayz: {
     key: 'gatewayz',
@@ -257,10 +277,16 @@ export const buildEnv = ({ providerKey, baseUrl, apiKey, extraEnv, modelOverride
     const trimmed = normalizeModelValue(apiKey);
     if (trimmed) {
       env.ANTHROPIC_AUTH_TOKEN = trimmed;
+      if (provider.authTokenAlsoSetsApiKey) {
+        env.ANTHROPIC_API_KEY = trimmed;
+      }
     } else if (providerKey === 'ccrouter') {
       env.ANTHROPIC_AUTH_TOKEN = CCROUTER_AUTH_FALLBACK;
+      if (provider.authTokenAlsoSetsApiKey) {
+        env.ANTHROPIC_API_KEY = CCROUTER_AUTH_FALLBACK;
+      }
     }
-    if (Object.hasOwn(env, 'ANTHROPIC_API_KEY')) {
+    if (!provider.authTokenAlsoSetsApiKey && Object.hasOwn(env, 'ANTHROPIC_API_KEY')) {
       delete env.ANTHROPIC_API_KEY;
     }
   } else if (apiKey) {
@@ -289,7 +315,7 @@ export const buildEnv = ({ providerKey, baseUrl, apiKey, extraEnv, modelOverride
   if (authMode === 'authToken') {
     if (provider.requiresEmptyApiKey) {
       env.ANTHROPIC_API_KEY = '';
-    } else if (Object.hasOwn(env, 'ANTHROPIC_API_KEY')) {
+    } else if (!provider.authTokenAlsoSetsApiKey && Object.hasOwn(env, 'ANTHROPIC_API_KEY')) {
       delete env.ANTHROPIC_API_KEY;
     }
   }

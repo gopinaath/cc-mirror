@@ -58,6 +58,7 @@ test('E2E: Colored ASCII art content verification', async (t) => {
           gatewayz: /\\u001b\[38;5;141m/, // Violet
           vercel: /\\u001b\[38;5;250m/, // Light gray
           nanogpt: /\\u001b\[38;5;81m/, // Neon cyan
+          ollama: /\\u001b\[38;5;202m/, // Deep orange
         }
       : {
           zai: /\x1b\[38;5;220m/, // Gold
@@ -67,6 +68,7 @@ test('E2E: Colored ASCII art content verification', async (t) => {
           gatewayz: /\x1b\[38;5;141m/, // Violet
           vercel: /\x1b\[38;5;250m/, // Light gray
           nanogpt: /\x1b\[38;5;81m/, // Neon cyan
+          ollama: /\x1b\[38;5;202m/, // Deep orange
         };
     /* eslint-enable no-control-regex */
 
@@ -85,6 +87,7 @@ test('E2E: Colored ASCII art content verification', async (t) => {
       gatewayz: ['██████╗  █████╗', 'GatewayZ AI Gateway'],
       vercel: ['██╗   ██╗', 'Vercel AI Gateway'],
       nanogpt: ['███╗   ██╗', 'NanoGPT Anthropic API'],
+      ollama: ['██████╗', 'Ollama Anthropic API'],
     };
 
     for (const [providerKey, patterns] of Object.entries(asciiPatterns)) {

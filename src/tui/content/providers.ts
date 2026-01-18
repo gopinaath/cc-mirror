@@ -112,6 +112,31 @@ export const PROVIDER_EDUCATION: Record<string, ProviderEducation> = {
     setupNote:
       'Install: npm i -g @musistudio/claude-code-router, run "ccr start". Configure models in ~/.claude-code-router/config.json',
   },
+  ollama: {
+    headline: 'Ollama — Local + Cloud Anthropic Compatibility',
+    tagline: 'Warm, local-first models',
+    features: [
+      'Anthropic-compatible endpoint (local + cloud)',
+      'Run local models with Ollama runtime',
+      'Cloud models available via ollama.com',
+      'Ember-themed interface',
+    ],
+    bestFor: 'Local-first workstations and hybrid local/cloud setups',
+    models: {
+      opus: 'glm-4.7:cloud',
+      sonnet: 'qwen3-coder',
+      haiku: 'gpt-oss:20b',
+    },
+    requiresMapping: true,
+    hasPromptPack: false,
+    setupLinks: {
+      subscribe: 'https://ollama.com',
+      apiKey: 'https://ollama.com',
+      docs: 'https://docs.ollama.com/api/anthropic-compatibility',
+    },
+    setupNote:
+      'Local: set key to "ollama" (values ignored). Cloud: set base URL to https://ollama.com and use your API key.',
+  },
   gatewayz: {
     headline: 'GatewayZ — AI Gateway',
     tagline: 'One gateway, many providers',
@@ -195,10 +220,10 @@ export const getProviderEducation = (providerKey: string): ProviderEducation | n
  * Quick comparison points for provider selection
  */
 export const PROVIDER_COMPARISON = {
-  fullySupported: ['mirror', 'zai', 'minimax', 'openrouter', 'ccrouter', 'gatewayz', 'vercel', 'nanogpt'],
-  requiresMapping: ['openrouter', 'gatewayz', 'vercel'],
+  fullySupported: ['mirror', 'zai', 'minimax', 'openrouter', 'ccrouter', 'ollama', 'gatewayz', 'vercel', 'nanogpt'],
+  requiresMapping: ['openrouter', 'ollama', 'gatewayz', 'vercel'],
   hasPromptPack: ['zai', 'minimax'],
-  localFirst: ['ccrouter'],
+  localFirst: ['ccrouter', 'ollama'],
   pureClaudeCode: ['mirror'],
   recommended: ['mirror'],
 };

@@ -72,6 +72,11 @@ function getPlaceholder(providerKey: string | undefined, model: 'opus' | 'sonnet
       sonnet: 'anthropic/claude-3-5-sonnet-20241022',
       haiku: 'anthropic/claude-3-haiku-20240307',
     },
+    ollama: {
+      opus: 'glm-4.7:cloud',
+      sonnet: 'qwen3-coder',
+      haiku: 'gpt-oss:20b',
+    },
     ccrouter: {
       opus: 'deepseek,deepseek-reasoner',
       sonnet: 'deepseek,deepseek-chat',
@@ -184,7 +189,10 @@ export const ModelConfigScreen: React.FC<ModelConfigScreenProps> = ({
       </Box>
 
       {/* Model-mapping help */}
-      {(providerKey === 'openrouter' || providerKey === 'gatewayz' || providerKey === 'vercel') && (
+      {(providerKey === 'openrouter' ||
+        providerKey === 'gatewayz' ||
+        providerKey === 'vercel' ||
+        providerKey === 'ollama') && (
         <Box flexDirection="column" marginBottom={1}>
           {providerKey === 'openrouter' && (
             <>
@@ -202,7 +210,13 @@ export const ModelConfigScreen: React.FC<ModelConfigScreenProps> = ({
               </Box>
             </>
           )}
-          {providerKey !== 'openrouter' && (
+          {providerKey === 'ollama' && (
+            <>
+              <Text color={colors.textMuted}>Use model IDs from `ollama list` (local) or cloud model IDs.</Text>
+              <Text color={colors.textDim}>Tip: `ollama cp source target` creates friendly aliases.</Text>
+            </>
+          )}
+          {providerKey !== 'openrouter' && providerKey !== 'ollama' && (
             <Text color={colors.textMuted}>
               Use your gateway model identifiers (some providers use provider/model format).
             </Text>

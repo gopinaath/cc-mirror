@@ -68,7 +68,7 @@ src/
 │   └── prompt-pack/       # System prompt overlays
 │
 ├── providers/              # Provider templates
-│   └── index.ts           # mirror, zai, minimax, openrouter, ccrouter, gatewayz, vercel, nanogpt
+│   └── index.ts           # mirror, zai, minimax, openrouter, ccrouter, ollama, gatewayz, vercel, nanogpt
 │
 └── brands/                 # Theme presets
     ├── index.ts           # Brand registry
@@ -76,6 +76,7 @@ src/
     ├── minimax.ts         # Coral theme
     ├── openrouter.ts      # Teal theme
     ├── ccrouter.ts        # Sky theme
+    ├── ollama.ts          # Ember theme
     ├── gatewayz.ts        # Violet theme
     ├── vercel.ts          # Monochrome theme
     ├── nanogpt.ts         # Neon theme

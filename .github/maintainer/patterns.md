@@ -27,4 +27,4 @@
 ## UX Patterns
 
 - Users are confused about MCP server config location and variant vs project scope.
-- The dev-browser skill install default is frequently questioned; consider defaulting off in quick mode.
+- The dev-browser skill default was frequently questioned; now default off with opt-in (keep docs/UI aligned).

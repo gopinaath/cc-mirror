@@ -26,3 +26,13 @@
 **Date:** 2026-01-18
 **Decision:** Defer Sync Variants to a later milestone.
 **Reasoning:** High complexity; prioritize provider expansion and core stability first.
+
+### [PR:22] Declined - --no-skills flag
+**Date:** 2026-01-18
+**Decision:** Do not add a dedicated flag; dev-browser defaults to off with opt-in.
+**Reasoning:** Team mode removed; simpler default and UI toggle avoids extra CLI surface area.
+
+### Ollama provider intake
+**Date:** 2026-01-18
+**Decision:** Add Ollama provider (Anthropic compatibility; local + cloud).
+**Reasoning:** Local-first demand and clear compatibility docs make this a high-leverage addition.

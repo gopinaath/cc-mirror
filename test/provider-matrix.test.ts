@@ -45,6 +45,16 @@ test('Provider Feature Matrix', async (t) => {
     assert.equal(openrouter.authMode, 'authToken', 'openrouter should use authToken mode');
   });
 
+  await t.test('ollama provider uses auth token + api key', () => {
+    const ollama = getProvider('ollama');
+    assert.ok(ollama, 'ollama provider should exist');
+    assert.equal(ollama.authMode, 'authToken', 'ollama should use authToken mode');
+    assert.ok(ollama.authTokenAlsoSetsApiKey, 'ollama should keep API key with auth token');
+    assert.ok(ollama.requiresModelMapping, 'ollama should require model mapping');
+    assert.ok(ollama.env.ANTHROPIC_AUTH_TOKEN, 'ollama should have default auth token');
+    assert.ok(ollama.env.ANTHROPIC_API_KEY, 'ollama should have default api key');
+  });
+
   await t.test('zai and minimax providers have splash styles', () => {
     const zai = getProvider('zai');
     const minimax = getProvider('minimax');
