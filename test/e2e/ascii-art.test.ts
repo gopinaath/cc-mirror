@@ -84,7 +84,7 @@ test('E2E: Colored ASCII art content verification', async (t) => {
       minimax: ['███╗   ███╗', 'MiniMax-M2.1', 'AGI for All'],
       openrouter: ['██████╗ ██████╗', 'One API', 'Any Model'],
       ccrouter: ['██████╗ ██████╗██████╗', 'Claude Code Router', 'Any Model'],
-      gatewayz: ['██████╗  █████╗', 'GatewayZ AI Gateway'],
+      gatewayz: ['██████╗  █████╗', 'GatewayZ'],
       vercel: ['██╗   ██╗', 'Vercel AI Gateway'],
       nanogpt: ['███╗   ██╗', 'NanoGPT Anthropic API'],
       ollama: ['██████╗', 'Ollama Anthropic API'],
