@@ -17,7 +17,7 @@
 ## Contributor Patterns
 
 - Chinese-speaking user base is significant (consider i18n)
-- Contributors often submit multiple PRs for same issue (need faster review)
+- Provider additions often arrive as multiple overlapping PRs; prefer a single “provider intake” umbrella branch/PR to reduce drift (PR:31 vs PR:4/5/21).
 
 ## Codebase Patterns
 
