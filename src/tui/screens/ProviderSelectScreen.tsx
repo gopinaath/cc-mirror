@@ -84,16 +84,6 @@ export const ProviderSelectScreen: React.FC<ProviderSelectScreenProps> = ({ prov
       subtitle="Pick a provider preset for Claude Code"
       hints={[keyHints.continue, showDetails ? '? Hide details' : '? Show details']}
     >
-      {/* Help text */}
-      <Box marginBottom={1} flexDirection="column">
-        <Text color={colors.textMuted}>
-          {icons.star} <Text color={colors.gold}>Mirror Claude</Text> is the fastest path to vanilla Claude Code
-        </Text>
-        <Text color={colors.textMuted}>
-          {icons.bullet} Alternative providers for different models (GLM, MiniMax, etc.)
-        </Text>
-      </Box>
-
       <Box flexDirection="column" marginY={1}>
         {hasAbove && (
           <Text color={colors.textDim}>

@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Box, Text, useInput } from 'ink';
-import { colors, getProviderColors, icons } from './theme.js';
+import { colors, icons } from './theme.js';
 import { DEFAULT_BIN_DIR } from '../../../core/constants.js';
 import { getWrapperPath } from '../../../core/paths.js';
 import type { MenuItem } from './types.js';
@@ -123,10 +123,9 @@ export const ProviderCard: React.FC<ProviderCardProps> = ({
   docsUrl,
   showDetails = true,
 }) => {
-  const providerColors = getProviderColors(provider.key);
-  const labelColor = disabled ? colors.textDim : selected ? providerColors.accent : providerColors.primary;
-  const descriptionColor = disabled ? colors.textDim : selected ? colors.textMuted : colors.textDim;
-  const detailColor = selected ? providerColors.primary : colors.textDim;
+  const labelColor = disabled ? colors.textDim : colors.textBright;
+  const descriptionColor = disabled ? colors.textDim : colors.textMuted;
+  const detailColor = colors.textDim;
 
   return (
     <Box flexDirection="column" marginBottom={1}>
@@ -135,7 +134,6 @@ export const ProviderCard: React.FC<ProviderCardProps> = ({
         <Text color={labelColor} bold={selected} dimColor={disabled}>
           {provider.label}
         </Text>
-        {disabled && <Text color={colors.warning}> [Coming Soon]</Text>}
       </Box>
       <Box marginLeft={3}>
         <Text color={descriptionColor} dimColor={disabled}>

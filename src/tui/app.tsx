@@ -236,7 +236,7 @@ export const App: React.FC<AppProps> = ({
   const [doctorReport, setDoctorReport] = useState<DoctorReportItem[]>([]);
   const [apiKeyDetectedFrom, setApiKeyDetectedFrom] = useState<string | null>(null);
 
-  // Include experimental providers to show "Coming Soon" in UI
+  // Include experimental providers in the UI list
   const providerList = useMemo(() => {
     const list = providers.listProviders(true);
     return [...list].sort((a, b) => {
